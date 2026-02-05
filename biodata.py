@@ -1,4 +1,3 @@
-
 print("Hello World")
 print("Syarin Suherman")
 print("NIM: 25071101299")
