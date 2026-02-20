@@ -86,7 +86,6 @@ p1 = Person("Emil")
 
 del Person.greet
 
-p1.greet()
 
 #example
 class Rectangle:
