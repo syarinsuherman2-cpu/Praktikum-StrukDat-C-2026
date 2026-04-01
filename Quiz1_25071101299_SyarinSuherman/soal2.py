@@ -16,8 +16,14 @@ def info_klinik():
     print("Alamat :", info[1])
     print("Telp   :", info[2])
 
+pasien_hari_ini = [
+    {"nama": "A", "penyakit": "Flu"},
+    {"nama": "B", "penyakit": "Demam"},
+]
+
 def rekap_penyakit():
     data = pasien_hari_ini
+
     
     # set (unik)
     unik = set([p["penyakit"] for p in data])
