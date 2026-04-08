@@ -14,9 +14,10 @@ class Pasien:
         self.__id = id
         self.__nama = nama
         self.__penyakit = penyakit
+
         Pasien.jumlah += 1
 
-    def get_id(self):
+    def get_id(self):   # Getter
         return self.__id
 
     def get_nama(self):
@@ -25,7 +26,7 @@ class Pasien:
     def get_penyakit(self):
         return self.__penyakit
 
-    def tampilkan_info(self):
+    def tampilkan_info(self):  # Method tampilkan info
         print("ID      :", self.__id)
         print("Nama    :", self.__nama)
         print("Penyakit:", self.__penyakit)
@@ -40,15 +41,16 @@ class PasienPrioritas(Pasien):
         super().__init__(id, nama, penyakit)
         self.prioritas = prioritas
 
-    def tampilkan_info(self):
+    def tampilkan_info(self): # Override method
         super().tampilkan_info()
         print("Prioritas :", self.prioritas)
+
         if self.prioritas == "Darurat":
             print("** Segera tangani! **")
 
 
-p1 = Pasien("P001", "Andi", "Flu")
-p2 = PasienPrioritas("P007", "Ghani", "Sesak Napas", "Darurat")
+p1 = Pasien("P001", "Andi", "Flu") # objek
+p2 = PasienPrioritas("P007", "Ghani", "Sesak Napas", "Darurat") # objek prioritas
 
 p1.tampilkan_info()
 print()

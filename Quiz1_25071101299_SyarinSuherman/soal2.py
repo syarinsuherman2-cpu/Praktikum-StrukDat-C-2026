@@ -9,42 +9,41 @@ def filter_harga(data, min_harga, max_harga):
     return (filter_harga)
 
 def info_klinik():
-    info = ("Klinik Sehat Bersama", "Jl. Merdeka No.10", "0761-12345")
+    klinik = (
+        "Klinik Sehat Bersama",
+        "Jl. Merdeka No. 10, Pekanbaru",
+        "0761-12345"
+    )
     
     print("Info Klinik:")
-    print("Nama   :", info[0])
-    print("Alamat :", info[1])
-    print("Telp   :", info[2])
-
-pasien_hari_ini = [
-    {"nama": "A", "penyakit": "Flu"},
-    {"nama": "B", "penyakit": "Demam"},
-]
-
+    print("Nama   :", klinik[0])
+    print("Alamat :", klinik[1])
+    print("Telp   :", klinik[2])
+    
 def rekap_penyakit():
-    data = pasien_hari_ini
-
+    penyakit_unik = {p["penyakit"] for p in pasien_hari_ini} # set
     
-    # set (unik)
-    unik = set([p["penyakit"] for p in data])
-    print("\nJenis Penyakit Unik:", unik)
-    print("Jumlah jenis penyakit:", len(unik))
+    print("\nJenis Penyakit Unik:", penyakit_unik)
+    print("Jumlah jenis penyakit:", len(penyakit_unik))
     
-    # frekuensi
-    frek = {}
-    for p in data:
+    # menghitung jumlah pasien per penyakit
+    rekap = {}
+    for p in pasien_hari_ini:
         penyakit = p["penyakit"]
-        frek[penyakit] = frek.get(penyakit, 0) + 1
+        if penyakit in rekap:
+            rekap[penyakit] += 1
+        else:
+            rekap[penyakit] = 1
     
     print("\nRekap per penyakit:")
-    for k, v in frek.items():
-        print(f"{k} : {v} pasien")
+    for penyakit in rekap:
+        print(f"{penyakit} : {rekap[penyakit]} pasien")
     
-    # terbanyak
-    maks = max(frek.values())
-    hasil = [k for k in frek if frek[k] == maks]
+    maks = max(rekap.values()) # jumlah terbanyak
     
-    print("Penyakit terbanyak:", ", ".join(hasil), f"({maks} pasien)")
-
+    terbanyak = [p for p in rekap if rekap[p] == maks] # penyakit dengan jumlah terbanyak
+    
+    print("\nPenyakit terbanyak:", ", ".join(terbanyak), f"({maks} pasien)")
+    
 info_klinik()
 rekap_penyakit()
