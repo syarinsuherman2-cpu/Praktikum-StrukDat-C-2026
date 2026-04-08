@@ -18,7 +18,7 @@ pasien_hari_ini = [
 ]
 
 
-def info_klinik():
+def info_klinik(): #tuple
     klinik = (
         "Klinik Sehat Bersama",
         "Jl. Merdeka No. 10, Pekanbaru",
@@ -30,30 +30,29 @@ def info_klinik():
     print("Alamat :", klinik[1])
     print("Telp   :", klinik[2])
     
-def rekap_penyakit():
+def rekap_penyakit(): #rekap jenis penyakit dengan set
     penyakit_unik = {p["penyakit"] for p in pasien_hari_ini} # set
     
     print("\nJenis Penyakit Unik:", penyakit_unik)
     print("Jumlah jenis penyakit:", len(penyakit_unik))
     
-    # menghitung jumlah pasien per penyakit
-    rekap = {}
-    for p in pasien_hari_ini:
+    rekap = {} # menghitung jumlah pasien per penyakit dengan dictionary
+    for p in pasien_hari_ini: #loop
         penyakit = p["penyakit"]
         if penyakit in rekap:
             rekap[penyakit] += 1
         else:
             rekap[penyakit] = 1
     
-    print("\nRekap per penyakit:")
+    print("\nRekap per penyakit:") #menampilkan hasil rekap
     for penyakit in rekap:
         print(f"{penyakit} : {rekap[penyakit]} pasien")
     
-    maks = max(rekap.values()) # jumlah terbanyak
+    maks = max(rekap.values()) #pasien jumlah terbanyak
     
     terbanyak = [p for p in rekap if rekap[p] == maks] # penyakit dengan jumlah terbanyak
     
     print("\nPenyakit terbanyak:", ", ".join(terbanyak), f"({maks} pasien)")
     
-info_klinik()
+info_klinik() #memanggil fungsi untuk  menampilkan output
 rekap_penyakit()

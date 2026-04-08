@@ -7,17 +7,17 @@ daftar_merk = ("set")
 
 
 
-class Pasien:
-    jumlah = 0
+class Pasien: #class
+    jumlah = 0 #variable class
 
     def __init__(self, id, nama, penyakit):
-        self.__id = id
+        self.__id = id #atribut
         self.__nama = nama
         self.__penyakit = penyakit
 
         Pasien.jumlah += 1
 
-    def get_id(self):   # Getter
+    def get_id(self):   # Get
         return self.__id
 
     def get_nama(self):
@@ -35,8 +35,7 @@ class Pasien:
     def hitung_pasien():
         return Pasien.jumlah
 
-
-class PasienPrioritas(Pasien):
+class PasienPrioritas(Pasien): #class turunan
     def __init__(self, id, nama, penyakit, prioritas):
         super().__init__(id, nama, penyakit)
         self.prioritas = prioritas
@@ -56,4 +55,4 @@ p1.tampilkan_info()
 print()
 p2.tampilkan_info()
 
-print("\nTotal pasien:", Pasien.hitung_pasien())
+print("\nTotal pasien:", Pasien.hitung_pasien()) #menampilkan total pasien

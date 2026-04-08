@@ -22,29 +22,29 @@ pasien_hari_ini = [
     {"id": "P006", "nama": "Fajar", "usia": 17, "penyakit": "Maag",  "bayar": False},
 ]
 
-def tampilkan_pasien():
+def tampilkan_pasien(): #menampilkan data pasien
     print("===== DATA PASIEN ====")
     print("No | ID   | Nama  | Usia | Penyakit | Status Bayar")
     
-    for i in range(len(pasien_hari_ini)):
+    for i in range(len(pasien_hari_ini)): #looping
         n = pasien_hari_ini[i]  
         status = "Lunas" if n["bayar"] else "Belum Bayar"
         print(f"{i+1} | {n['id']} | {n['nama']} | {n['usia']} | {n['penyakit']} | {status}")
         
-def filter_belum_bayar():
+def filter_belum_bayar(): #list pasien yg belum bayar
     belum = []
 
-    for p in pasien_hari_ini:
+    for p in pasien_hari_ini: #loop
         if not p["bayar"]:
             belum.append(p["nama"]) #list comprehension
 
     belum.sort()    # sorting
     
-    print("\n===== PASIEN BELUM BAYAR =====")
+    print("\n===== PASIEN BELUM BAYAR =====") #menampilkan pasien yg belum bayar
     for i in range(len(belum)):
         print(f"{i+1}. {belum[i]}")
 
     print("Total belum bayar:", len(belum))
 
-tampilkan_pasien()
+tampilkan_pasien() #memanggil fungsi untuk output
 filter_belum_bayar()
