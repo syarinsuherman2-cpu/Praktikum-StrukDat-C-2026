@@ -23,24 +23,27 @@ pasien_hari_ini = [
 ]
 
 def tampilkan_pasien():
-    print("===== DATA PASIEN KLINIK =====")
+    print("===== DATA PASIEN ====")
     print("No | ID   | Nama  | Usia | Penyakit | Status Bayar")
     
-    for i, p in enumerate(pasien_hari_ini, 1):
-        status = "Lunas" if p["bayar"] else "Belum Bayar"
-        print(f"{i}  | {p['id']} | {p['nama']} | {p['usia']} | {p['penyakit']} | {status}")
-
+    for i in range(len(pasien_hari_ini)):
+        n = pasien_hari_ini[i]  
+        status = "Lunas" if n["bayar"] else "Belum Bayar"
+        print(f"{i+1} | {n['id']} | {n['nama']} | {n['usia']} | {n['penyakit']} | {status}")
+        
 def filter_belum_bayar():
-    # list comprehension
-    belum = [p["nama"] for p in pasien_hari_ini if not p["bayar"]]
-    
-    # sorting
-    belum.sort()
+    belum = []
+
+    for p in pasien_hari_ini:
+        if not p["bayar"]:
+            belum.append(p["nama"]) #list comprehension
+
+    belum.sort()    # sorting
     
     print("\n===== PASIEN BELUM BAYAR =====")
-    for i, nama in enumerate(belum, 1):
-        print(f"{i}. {nama}")
-    
+    for i in range(len(belum)):
+        print(f"{i+1}. {belum[i]}")
+
     print("Total belum bayar:", len(belum))
 
 tampilkan_pasien()
